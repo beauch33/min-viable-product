@@ -7,14 +7,14 @@ app = Flask(__name__)
 @app.route("/")
 def main():
     return '''
-     <form action="/echo_user_input" method="POST">
+     <form action="/analyze_sentiment" method="POST">
          <label for="company_name">Enter Company Name:</label>
-         <input name="user_input">
-         <input type="submit" value="Submit!">
+         <input type="text" id="company_name" name="company_name" required>
+         <input type="submit" value="Submit">
      </form>
      '''
 
 @app.route("/echo_user_input", methods=["POST"])
-def echo_input():
+def analyze_sentiment():
     company_name = request.form.get("company_name", "")
-    return "Sentiment analysis for company: " + company_name
+    return f"Sentiment analysis for {company_name}"
