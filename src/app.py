@@ -4,6 +4,7 @@ from flask import Flask, request
 from flask_sqlalchemy import SQLAlchemy
 from models import db, SentimentData
 from sentiment.analysis import analyze_sentiment  # Import the analyze_sentiment function
+from src.models import db, SentimentData
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///sentiment_analysis.db'
