@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 from flask import Flask, request
+from sentiment.analysis import analyze_sentiment
 
 app = Flask(__name__)
 
