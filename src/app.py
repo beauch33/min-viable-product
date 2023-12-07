@@ -1,13 +1,16 @@
 #!/usr/bin/env python3
 
+import os
 from flask import Flask, request
 from flask_sqlalchemy import SQLAlchemy
 from models import db, SentimentData
-from sentiment.analysis import analyze_sentiment  # Import the analyze_sentiment function
+from sentiment.analysis import analyze_sentiment
 from src.models import db, SentimentData
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///sentiment_analysis.db'
+
+# Use PostgreSQL database on Heroku, fallback to SQLite for development
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///sentiment_analysis.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # Disable tracking modifications for now
 
 # Initialize SQLAlchemy
