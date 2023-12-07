@@ -14,7 +14,7 @@ def main():
      </form>
      '''
 
-@app.route("/echo_user_input", methods=["POST"])
+@app.route("/analyze_sentiment", methods=["POST"])
 def analyze_sentiment():
     company_name = request.form.get("company_name", "")
     return f"Sentiment analysis for {company_name}"
